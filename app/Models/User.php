@@ -60,4 +60,9 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function exams()
+    {
+        return $this->hasMany(Exam::class,'staff_id'); //FK必是指定是staff_id，否則在此User當中FK會內定是user_id
+    }
 }

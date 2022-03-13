@@ -15,6 +15,8 @@ class ExamController extends Controller
     public function index()
     {
         //
+        $exams = auth()->user()->exams()->get();
+        dd($exams);
     }
 
     /**
@@ -46,7 +48,10 @@ class ExamController extends Controller
      */
     public function show(Exam $exam)
     {
-        //
+        $staff = $exam->staff()->first(); //使用first()與get()不一樣
+        //$staff = $exam->staff;   //如果確定只有一個staff
+        dd($staff->name);
+
     }
 
     /**
